@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify Clone</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="utility.css">
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <div class="container flex">
+        <div class="left">
+            <div class="home bg-grey rounded m-1 p-1">
+                <img class="home-threebars" src="svgs/threebars.svg" alt="threebars">
+                <div class="logo"><img class="invert" src="svgs/logo.svg" alt="logo"></div>
+                <ul>
+                    <li><img class="invert" src="svgs/home.svg" alt="home">Home</li>
+                    <li><img class="invert" src="svgs/search.svg" alt="search">Search</li>
+                </ul>
+            </div>
+            <div class="library bg-grey rounded m-1 p-1">
+                <div class="heading"><img class="invert" src="svgs/library.svg" alt="library">Your Library</div>
+                <div class="songlist">
+                    <ul>
+                        <!-- <li>
+                            <div class="songCard">
+                                <div class="songCard-left">
+                                    <img src="music.svg" alt="play" class="invert">
+                                    <div>Song Name</div>
+                                </div>
+                                <div class="songCard-right" >Play Now
+                                    <img src="play.svg" alt="play" class="">
+                                </div>
+
+                            </div>
+                        </li>  -->
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="right bg-grey m-1 rounded ">
+            <header>
+                <nav>
+                    <img class="threebars" src="svgs/threebars.svg" alt="threebars">
+                    <div class="left-right-buttons">
+                        <?xml version="1.0" ?><svg fill="white" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg">
+                            <title />
+                            <path
+                                d="M69.8437,43.3876,33.8422,13.3863a6.0035,6.0035,0,0,0-7.6878,9.223l30.47,25.39-30.47,25.39a6.0035,6.0035,0,0,0,7.6878,9.2231L69.8437,52.6106a6.0091,6.0091,0,0,0,0-9.223Z" />
+                        </svg>
+
+                        <?xml version="1.0" ?><svg fill="white" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg">
+                            <title />
+                            <path
+                                d="M69.8437,43.3876,33.8422,13.3863a6.0035,6.0035,0,0,0-7.6878,9.223l30.47,25.39-30.47,25.39a6.0035,6.0035,0,0,0,7.6878,9.2231L69.8437,52.6106a6.0091,6.0091,0,0,0,0-9.223Z" />
+                        </svg>
+
+                    </div>
+
+                </nav>
+                <div class="buttons">
+                    <button class="signup-btn m-1">Sign up</button>
+                    <button class="login-btn">Log in</button>
+                </div>
+
+            </header>
+            <div class="spotifyPlaylist">
+                <h2>MMB Playlist</h2>
+                <div class="cardContainer">
+
+                    <!-- <div data-album="" class="card">
+                        <svg height="100%" version="1.1" viewBox="0 0 36 36" width="100%" class="play-button">
+                            <path d="M 12,26 18.5,22 18.5,14 12,10 z M 18.5,22 25,18 25,18 18.5,14 z"></path>
+                        </svg>
+                        <img src="cute character real life social media.png" alt="thumbnail">
+                        <h3>Happy Hits</h3>
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptas, incidunt!</p>
+                    </div> -->
+
+
+                </div>
+                
+                <div class="playbar">
+                    <div class="info">
+
+                        <div class="songinfo">
+                            Song Name
+                        </div>
+
+                        <div class="options">
+                            <img id="playbar-previous" src="svgs/previous.svg" alt="previous">
+                            <img id="playbar-play" src="svgs/play.svg" alt="play">
+                            <img id="playbar-next" src="svgs/next.svg" alt="next">
+                        </div>
+                        <div class="duration-volume">
+                            <div class="duration-info">
+                                00:00 / 00:00
+                            </div>
+    
+                            <div class="volume-info">
+                                <img src="svgs/sound.svg" alt="sound">
+                                <input type="range" name="volume" id="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="seekbar">
+                        <div class="circle">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>
