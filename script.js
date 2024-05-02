@@ -5,54 +5,42 @@ let folders;
 
 async function getSongs(folder) {
     currFolder = folder
-    // let a = await fetch(`http://127.0.0.1:3000/albums/${folder}`)
-    let a = await fetch(`./albums/${folder}`)
-    let response = await a.text();
-    let div = document.createElement("div")
-    div.innerHTML = response
-    let as = div.getElementsByTagName("a")
-
+    let fetching = await fetch("https://api.github.com/repos/ManthanBohara/Spotify-clone/contents/albums/"+folder)
+    let response = await fetching.json();
+    console.log(response);
     songs = [];
-    for (let index = 0; index < as.length; index++) {
-        const element = as[index];
-        if (element.href.endsWith(".mp3")) {
-            songs.push(element.href.split(`/${folder}`)[1])
+    for (let index = 0; index < response.length; index++) {
+        if (response[index].html_url.endsWith(".mp3")){
+            songs.push(response[index].html_url.split("/songs/")[1])
         }
     }
+    console.log(songs);
     return songs
 }
+
+
 async function displayAlbums() {
     
     // let a = await fetch(`http://127.0.0.1:3000/albums`)
-    let a = await fetch(`./albums`)
-    let response = await a.text();
-    let div = document.createElement("div")
-    div.innerHTML = response
-    let as = div.getElementsByTagName("a")
-
+    let fetching = await fetch("https://api.github.com/repos/ManthanBohara/Spotify-clone/contents/albums")
+    let response = await fetching.json()
+    
     folders = [];
-    for (let index = 0; index < as.length; index++) {
-        const element = as[index];
-        if (element.href.includes("/albums/")) {
-            folders.push(element.href.split(`/albums/`)[1])
-        }
+    for (let index = 0; index < response.length; index++) {
+        if (response[index].type=="dir"){
+            folders.push(response[index].name)
+        }   
     }
-
+    
+    
+    
     folders.forEach(async folder => {
-        // let a = await fetch(`http://127.0.0.1:3000/albums/${folder}/info.json`)
-        let a = await fetch(`./albums/${folder}/info.json`)
-        let response = await a.json()
+
+        let fetching = await fetch("https://api.github.com/repos/ManthanBohara/Spotify-clone/contents/albums/"+folder+"/info.json")
+        let response = await fetching.json()
+        let info = JSON.parse(atob(response.content))
 
         let coverImg='svgs/music.svg'
-
-        
-        // let cover = await fetch(`http://127.0.0.1:3000/albums/${folder}/cover.png`)
-        let cover = await fetch(`./albums/${folder}/cover.png`)
-        
-        if (cover.ok){
-            // coverImg=`http://127.0.0.1:3000/albums/${folder}/cover.png`
-            coverImg=`./albums/${folder}/cover.png`
-        }
         
         document.querySelector(".cardContainer").insertAdjacentHTML("beforeend", `
         <div data-album="${folder}" class="card">
@@ -60,8 +48,8 @@ async function displayAlbums() {
                             <path d="M 12,26 18.5,22 18.5,14 12,10 z M 18.5,22 25,18 25,18 18.5,14 z"></path>
                         </svg>
                         <img src="${coverImg}" alt="thumbnail">
-                        <h3>${response.title}</h3>
-                        <p>${response.description}</p>
+                        <h3>${info.title}</h3>
+                        <p>${info.description}</p>
                     </div>
         `)
     });
